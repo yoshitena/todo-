@@ -22,7 +22,7 @@ class TodoController extends Controller
     return redirect('/');
   }
 
-  public function update(Request $request)
+  public function update(TodoRequest $request)
   {
     $form = $request->all();
     unset($form['_token']);
