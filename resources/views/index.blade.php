@@ -15,7 +15,7 @@
 <body>
   <div class="container">
     <div class="card">
-          @if (count($errors) > 0)
+    @if (count($errors) > 0)
       <ul>
         @foreach ($errors->all() as $error)
         <li>{{$error}}</li>
@@ -25,11 +25,14 @@
       <p class="title mb-15">Todo List</p>
       <div class="todo">
         <form action="todos/create" method="post" class="flex between mb-30">
-          <input type="text" class="input-add" name="content" />
-          <input class="button-add" type="submit" value="追加" />
-        </form>
-        <table>
         @csrf
+          <input type="text" class="input-add" name="content" />
+          <input class="button-add" type="submit" value=追加>
+        </form>
+
+        
+        <table>
+        
           <tr>
             <th>作成日</th>
             <th>タスク名</th>
@@ -40,17 +43,19 @@
           <tr>
 
             <td>{{$todo->created_at}}</td>
-            <form action="todo/update" method="post">
+            <form action="todos/update" method="post">
               @csrf
+              <input type="hidden" name="_token" value="id"> 
               <td>
-                <input type="text" class="input-update" value="{{$todo->content}}" name="content" />
+                <input type="text" class="input-update" value="{{$todo->content}}" name="content"/>
               </td>
               <td>
                 <button class="button-update">更新</button>
               </td>
             </form>
             <td>
-              <form action="/todo/delete" method="post">
+              <form action="/todos/delete" method="post">
+                @csrf
                   <button class="button-delete">削除</button>
               </form>
             </td>
